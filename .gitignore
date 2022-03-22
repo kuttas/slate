@@ -12,7 +12,7 @@ test/tmp
 test/version_tmp
 tmp
 *.DS_STORE
-build/
+# build/ - NB (kuttas): I want to check in built files for simplicity
 .cache
 .vagrant
 .sass-cache
