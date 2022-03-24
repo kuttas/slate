@@ -1,0 +1,652 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Plex API"
+        >
+    <title>Plex API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;http&quot;,&quot;shell&quot;,&quot;go&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="http">http</a>
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="go">go</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login-via-authorization-code-with-or-without-proof-key-code-exchange" class="toc-h2 toc-link" data-title="Login via Authorization Code (with or without Proof Key Code Exchange)">Login via Authorization Code (with or without Proof Key Code Exchange)</a>
+                  </li>
+                  <li>
+                    <a href="#token-exchange-for-authorization-code-flow-with-or-without-proof-key-code-exchange" class="toc-h2 toc-link" data-title="Token Exchange for Authorization Code Flow (with or without Proof Key Code Exchange)">Token Exchange for Authorization Code Flow (with or without Proof Key Code Exchange)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#invites" class="toc-h1 toc-link" data-title="Invites">Invites</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#send-invite" class="toc-h2 toc-link" data-title="Send Invite">Send Invite</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://www.userclouds.com'>Copyright UserClouds 2021-</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Plex API, an OIDC/OAuth-conformant authentication API with support for multiple underlying IDentity Providers (IDPs) such as:</p>
+
+<ul>
+<li>UserClouds</li>
+<li>Auth0</li>
+<li>Cognito (coming soon)</li>
+</ul>
+
+<p>We have documentation &amp; samples for:</p>
+
+<ul>
+<li>Pure HTTP</li>
+<li>Shell (via curl)</li>
+<li>Golang (native SDK)</li>
+<li>Python (coming soon)</li>
+<li>Typescript (coming soon)</li>
+</ul>
+
+<p>You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='login-via-authorization-code-with-or-without-proof-key-code-exchange'>Login via Authorization Code (with or without Proof Key Code Exchange)</h2>
+<blockquote>
+<p>To start the OIDC Authorization Code Login flow, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">GET http://sample.tenant.userclouds.com/oidc/authorize?
+  response_type=code&amp;
+  client_id=&lt;YOUR_CLIENT_ID&gt;&amp;
+  redirect_uri=&lt;YOUR_CALLBACK_URL&gt;&amp;
+  scope=openid+&lt;ADDITIONAL_SCOPES&gt;&amp;
+  state=&lt;STATE&gt;&amp;
+  code_challenge_method=S256&amp;
+  code_challenge=&lt;CODE_CHALLENGE&gt;
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s1">'https://sample.tenant.userclouds.com/oidc/authorize?response_type=code&amp;client_id=&lt;YOUR_CLIENT_ID&gt;&amp;redirect_uri=&lt;YOUR_CALLBACK_URL&gt;&amp;scope=openid+&lt;ADDITIONAL_SCOPES&gt;&amp;state=&lt;STATE&gt;&amp;code_challenge=&lt;CODE_CHALLENGE&gt;&amp;code_challenge_method=S256'</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">import</span> <span class="s">"golang.org/x/oauth2"</span>
+
+<span class="n">prov</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">oidc</span><span class="o">.</span><span class="n">NewProvider</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="s">"https://&lt;YOURTENANTNAME&gt;.tenant.userclouds.com"</span><span class="p">)</span>
+
+<span class="n">oauthConfig</span> <span class="o">:=</span> <span class="n">oauth2</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+  <span class="n">ClientID</span><span class="o">:</span>     <span class="s">"&lt;YOUR_CLIENT_ID&gt;"</span><span class="p">,</span>
+  <span class="n">Endpoint</span><span class="o">:</span>     <span class="n">prov</span><span class="o">.</span><span class="n">Endpoint</span><span class="p">(),</span>
+  <span class="n">RedirectURL</span><span class="o">:</span>  <span class="s">"&lt;YOUR_CALLBACK_URL&gt;"</span><span class="p">,</span>
+  <span class="n">Scopes</span><span class="o">:</span>       <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"openid &lt;ADDITIONAL_SCOPES&gt;"</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c">// Authorization Code Flow without Proof Key Code Exchange (PKCE)</span>
+<span class="n">url</span> <span class="o">:=</span> <span class="n">oauthConfig</span><span class="o">.</span><span class="n">AuthCodeURL</span><span class="p">(</span><span class="s">"&lt;STATE&gt;"</span><span class="p">)</span>
+
+<span class="c">// -- OR --</span>
+
+<span class="c">// Authorization Code Flow *with* Proof Key Code Exchange (PKCE) using SHA256 (the only supported method)</span>
+<span class="n">url</span> <span class="o">:=</span> <span class="n">oauthConfig</span><span class="o">.</span><span class="n">AuthCodeURL</span><span class="p">(</span>
+  <span class="n">state</span><span class="p">,</span>
+  <span class="n">oauth</span><span class="o">.</span><span class="n">SetAuthURLParam</span><span class="p">(</span><span class="s">"code_challenge_method"</span><span class="p">,</span> <span class="s">"S256"</span><span class="p">),</span>
+  <span class="n">oauth</span><span class="o">.</span><span class="n">SetAuthURLParam</span><span class="p">(</span><span class="s">"code_challenge"</span><span class="p">,</span> <span class="s">"&lt;CODE_CHALLENGE&gt;"</span><span class="p">))</span>
+
+<span class="c">// Redirect user agent to URL authorize endpoint</span>
+<span class="n">http</span><span class="o">.</span><span class="n">Redirect</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">http</span><span class="o">.</span><span class="n">StatusTemporaryRedirect</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace the values in brackets (e.g. Tenant URL, Client ID, State, Additional Scopes, and Redirect URL) with values appropriate to your application.
+Plex tenants, clients, and redirect URLs are registered on the UserClouds <a href="https://console.prod.userclouds.com">developer console</a>.</p>
+</blockquote>
+
+<p>The Authorization Code flow is the most commonly used and recommended way for client applications (web, mobile) to allow users to log in.</p>
+
+<p>If the application can be trusted to hold a secret (e.g. a web application with secure backend), the standard Authorization Code flow can be used.</p>
+
+<p>If the application cannot securely hold a secret (e.g. web single-page app or mobile app), and particularly if access tokens are needed, it should utilize the Proof Key Code Exchange feature to prevent token hijacking.</p>
+
+<aside class="notice">
+If only ID tokens are needed, an alternate login flow (Implicit Flow with Form post) may also be used.
+</aside>
+<h3 id='request'>Request</h3>
+<p>Because this is a <code>GET</code> request, all parameters should be specified as query parameters in the URL.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>response_type</td>
+<td>string</td>
+<td>yes</td>
+<td><code>code</code></td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>yes</td>
+<td>The Client ID of a registered app/client in your UserClouds tenant.</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>string</td>
+<td>yes</td>
+<td>A URL to your application. Must use <code>https://</code> for production web apps, or a mobile custom scheme for mobile apps. Can use <code>http://</code> for localhost and development tenants.</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>string</td>
+<td>yes</td>
+<td>Must specify <code>openid</code> in order to get an ID token from the token exchange endpoint later. May also specify <code>profile</code>, <code>email</code>, or other common scopes (see <a href='https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims'>OIDC Spec</a> for details).</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>yes</td>
+<td>An application-defined value used for 2 purpose: encode application state/context for a request, and to prevent CSRF attacks. See <a href='https://tools.ietf.org/id/draft-ietf-oauth-security-topics-13.html#rec_redirect'>OAuth Security Topics</a> for details.</td>
+</tr>
+<tr>
+<td>code_challenge_method</td>
+<td>string</td>
+<td>no</td>
+<td>Indicates that PKCE should be used with a given method. Only &#39;S256&#39; (SHA 256) is currently supported.</td>
+</tr>
+<tr>
+<td>code_challenge</td>
+<td>string</td>
+<td>no</td>
+<td>A value generated by applying <code>code_challenge_method</code> (i.e. SHA 256) to a <code>code_verifier</code> value generated by the client. See the <a href='https://datatracker.ietf.org/doc/html/rfc7636'>PKCE spec</a> for more details. NOTE: this value is required iff <code>code_challenge_method</code> is specified.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code># On Success
+
+HTTP/1.1 302 Found
+
+Location: https://&lt;YOUR_CALLBACK_URL&gt;?code=&lt;AUTHORIZATION_CODE&gt;&amp;state=&lt;STATE&gt;
+
+# On Error
+
+HTTP/1.1 302 Found
+
+Location: https://&lt;YOUR_CALLBACK_URL&gt;?error=&lt;OAUTH_ERROR_TYPE&gt;&amp;error_description=&lt;HUMAN_READABLE_DESCRIPTION&gt;
+</code></pre></div>
+<p>If the request is valid, the immediate <code>GET</code> call to the authorize endpoint will redirect to Plex&#39;s internal endpoint(s) for the user to perform an interactive login. After the user sucessfully authenticates (or in case of an error in the process), the user agent will ultimately be redirected (HTTP 302) to the application-provided (and pre-registered) redirect URL, unless the redirect URL and/or Client ID are invalid (in which case the response will be a 400 Bad Request).</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>success</td>
+<td>Cryptographically secure token which can be exchanged with the Token endpoint.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>success</td>
+<td>The application-defined value passed in to the Authorize call. The client should validate that this matches to prevent attacks (hijacks, replays, etc.).</td>
+</tr>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>failure</td>
+<td>One of the OAuth/OIDC-spec defined error values. See the <a href='https://datatracker.ietf.org/doc/html/rfc6749#section-4.1.2.1'>OAuth 2.0 spec</a> for more details.</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>failure</td>
+<td>A human readable explanation of the error.</td>
+</tr>
+</tbody></table>
+<h2 id='token-exchange-for-authorization-code-flow-with-or-without-proof-key-code-exchange'>Token Exchange for Authorization Code Flow (with or without Proof Key Code Exchange)</h2>
+<blockquote>
+<p>To exchange an authorization code for an access and/or ID token, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">POST http://sample.tenant.userclouds.com/oidc/token
+Content-Type:
+  grant_type=authorization_code&amp;
+  code=&lt;CODE&gt;&amp;
+  redirect_uri=&lt;YOUR_CALLBACK_URL&gt;&amp;
+  code_verifier=&lt;CODE_VERIFIER&gt;
+</span></code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://sample.tenant.userclouds.com/oidc/token'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{"response_type":"code", "client_id":"&lt;YOUR_CLIENT_ID&gt;", "redirect_uri":"&lt;YOUR_CALLBACK_URL&gt;", "scope":"openid &lt;ADDITIONAL_SCOPES&gt;", "state":"&lt;STATE&gt;", "code_challenge":"&lt;CODE_CHALLENGE&gt;", "code_challenge_method":"S256"}'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">import</span> <span class="s">"golang.org/x/oauth2"</span>
+
+<span class="n">prov</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">oidc</span><span class="o">.</span><span class="n">NewProvider</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="s">"https://&lt;YOURTENANTNAME&gt;.tenant.userclouds.com"</span><span class="p">)</span>
+
+<span class="n">oauthConfig</span> <span class="o">:=</span> <span class="n">oauth2</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+  <span class="n">ClientID</span><span class="o">:</span>     <span class="s">"&lt;YOUR_CLIENT_ID&gt;"</span><span class="p">,</span>
+  <span class="n">ClientSecret</span><span class="o">:</span> <span class="s">"&lt;YOUR_CLIENT_SECRET&gt;"</span><span class="p">,</span>
+  <span class="n">Endpoint</span><span class="o">:</span>     <span class="n">prov</span><span class="o">.</span><span class="n">Endpoint</span><span class="p">(),</span>
+  <span class="n">RedirectURL</span><span class="o">:</span>  <span class="s">"&lt;YOUR_CALLBACK_URL&gt;"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c">// Authorization Code Flow without Proof Key Code Exchange (PKCE)</span>
+<span class="n">tokenResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">oauthConfig</span><span class="o">.</span><span class="n">Exchange</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">"&lt;CODE&gt;"</span><span class="p">)</span>
+
+<span class="c">// -- OR --</span>
+
+<span class="c">// Authorization Code Flow *with* Proof Key Code Exchange (PKCE) using SHA256 (the only supported method)</span>
+<span class="n">tokenResponse</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">oauthConfig</span><span class="o">.</span><span class="n">Exchange</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">"&lt;CODE&gt;"</span><span class="p">,</span> <span class="n">oauth</span><span class="o">.</span><span class="n">SetAuthURLParam</span><span class="p">(</span><span class="s">"code_verifier"</span><span class="p">,</span> <span class="s">"&lt;CODE_VERIFIER&gt;"</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">err</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+<span class="n">rawIDToken</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">tokenResponse</span><span class="o">.</span><span class="n">Extra</span><span class="p">(</span><span class="s">"id_token"</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+<span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+
+<span class="n">accessToken</span> <span class="o">:=</span> <span class="n">tokenResponse</span><span class="o">.</span><span class="n">AccessToken</span>
+</code></pre></div><h3 id='request-2'>Request</h3>
+<p>This is a <code>POST</code> request with all parameters form encoded in the body.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>string</td>
+<td>yes</td>
+<td><code>authorization_code</code></td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string</td>
+<td>yes</td>
+<td>The Client ID of a registered app/client in your UserClouds tenant.</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>string</td>
+<td>yes</td>
+<td>The Client Secret of a registered app/client in your UserClouds tenant.</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>string</td>
+<td>yes</td>
+<td>A URL to your application. Must use <code>https://</code> for production web apps, or a mobile custom scheme for mobile apps. Can use <code>http://</code> for localhost and development tenants.</td>
+</tr>
+<tr>
+<td>code_verifier</td>
+<td>string</td>
+<td>no</td>
+<td>If PKCE was used to issue the authorization code, then this value must be specified and valid for the token exchange. See the <a href='https://datatracker.ietf.org/doc/html/rfc7636'>PKCE spec</a> for more details.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code># TODO: refresh token support, token expiry
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "access_token":"&lt;ACCESS_TOKEN&gt;",
+  "id_token":"&lt;ID_TOKEN&gt;",
+  "token_type":"Bearer",
+}
+</code></pre></div>
+<p>If the request is valid, the endpoint returns a json struct with an access token and/or ID token (depending on the scopes of the original request), as well as the token type which is always &quot;Bearer&quot;.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>success</td>
+<td>Cryptographically secure token which can be used to make API calls.</td>
+</tr>
+<tr>
+<td>id_token</td>
+<td>string</td>
+<td>success</td>
+<td>A raw three-part JWT which contains information about the resource owner / user.</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>success</td>
+<td>Always &quot;Bearer&quot;</td>
+</tr>
+</tbody></table>
+<h1 id='invites'>Invites</h1><h2 id='send-invite'>Send Invite</h2>
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="http">http</a>
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="go">go</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
